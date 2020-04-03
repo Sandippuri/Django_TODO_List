@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="marketing website">
+    <meta name="viewport" content="width=device-width,intial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="{% static 'todo/style.css'%}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+    crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="todo-form">
+      <h2 style="font-family:'Times New Roman', Times, serif">What are you going to do today?</h2><br>
+      <form action="{% url 'add' %}" method="POST" role="form">
+        {% csrf_token %}
+        <div class="form-row align-items-center">
+          <div class="txtb">
+            {{form.text}}
+          </div>
+            <button class="btn btn-primary" action="{% url 'add' %}" method="POST"> Add </button>
+        </div>
+      </form><br>
+        <div>
+          <a href="{% url 'deletecompleted' %}"><button type="button" class="btn btn-warning btn-lg">🗑️ Delete completed</button></a>
+          <a href="{% url 'deleteall' %}"><button type="button" class="btn btn-danger btn-lg">🗑️ Delete all</button></a>
+        </div><br>
+        <div>
+          <ul class="list-group">
+            {% for todo in todo_list %}
+              {% if todo.complete %}
+              <li class="list-group-item" style="background-color:lightgray;"><del>{{todo.text}}</del></li>
+              {% else %}
+              <a href="{% url 'completed' todo.id %}"><li class="list-group-item">{{todo.text}}</li></a> 
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      
+    </div>
+  </body>
+</html>

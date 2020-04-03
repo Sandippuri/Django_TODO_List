@@ -1,0 +1,43 @@
+body{
+  margin: 0;
+  padding: 0;
+  background: url(bgd.jpg);
+  background-size: cover;
+}
+.todo-form{
+  width: 85%;
+  max-width: 600px;
+  background: #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 30px 40px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  
+  box-shadow: 0 0 20px #000000b3;
+  font-family: "Montserrat",sans-serif;
+}
+.txtb{
+  border:2px solid gray;
+  margin: 2px 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  width: 460px;
+}
+.txtb input,.txtb textarea{
+  width: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 18px;
+  margin-top: 2px;
+}
+.list-group-item{
+  color: black;
+  font-weight: 500;
+  font-style: italic;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+}
